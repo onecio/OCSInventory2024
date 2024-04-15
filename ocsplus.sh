@@ -47,4 +47,14 @@ sudo sed -i 's/^server_ip=.*/server_ip=10.27.200.211/' /etc/ocsinventory-server/
 # Reiniciar o serviço OCS Inventory NG
 sudo systemctl restart ocsinventory-server
 
+# Instalar o OCS Inventory Agent
+sudo apt install ocsinventory-agent -y
+
+# Configurar o IP do servidor no agente OCS Inventory
+sudo sed -i "s/^server=.*/server=10.27.200.211/" /etc/ocsinventory/ocsinventory-agent.cfg
+
+# Reiniciar o serviço do agente OCS Inventory
+sudo systemctl restart ocsinventory-agent
+
 echo "Instalação concluída. Acesse o OCS Inventory NG em http://10.27.200.211/ocsreports"
+
